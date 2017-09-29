@@ -1,0 +1,10 @@
+{
+  "name": "septima-utils",
+  "version": "0.0.1",
+  "description": "Utils from Septima.",
+  "main": "index.js",
+  "repository": "https://github.com/marat-gainullin/septima-utils.git",
+  "author": "marat-gainullin <mg@altsoft.biz>",
+  "license": "BSD-3-Clause",
+  "private": false
+}
