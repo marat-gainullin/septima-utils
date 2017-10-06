@@ -1,20 +1,17 @@
-define(function () {
-    function extend(Child, Parent) {
-        var prevChildProto = {};
-        for (var m in Child.prototype) {
-            var member = Child.prototype[m];
-            if (typeof member === 'function') {
-                prevChildProto[m] = member;
-            }
+function extend(Child, Parent) {
+    const prevChildProto = {};
+    for (var cm in Child.prototype) {
+        const member = Child.prototype[cm];
+        if (typeof member === 'function') {
+            prevChildProto[cm] = member;
         }
-        var F = function () {
-        };
-        F.prototype = Parent.prototype;
-        Child.prototype = new F();
-        for (var m in prevChildProto)
-            Child.prototype[m] = prevChildProto[m];
-        Child.prototype.constructor = Child;
-        Child.superclass = Parent.prototype;
     }
-    return extend;
-});
+    const F = function() {};
+    F.prototype = Parent.prototype;
+    Child.prototype = new F();
+    for (var pcm in prevChildProto)
+        Child.prototype[pcm] = prevChildProto[pcm];
+    Child.prototype.constructor = Child;
+    Child.superclass = Parent.prototype;
+}
+export default extend;
