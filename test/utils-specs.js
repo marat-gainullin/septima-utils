@@ -9,8 +9,8 @@ import Md5 from  '../src/md5';
 
 describe('Utils Api', () => {
     it('Id', () => {
-        const id = Id.generate();
-        const longId = Id.generateLong();
+        const id = Id.next();
+        const longId = Id.nextExtended();
         expect(id).toBeDefined();
         expect(longId).toBeDefined();
         expect(typeof id).toEqual('number');

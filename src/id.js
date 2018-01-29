@@ -8,7 +8,7 @@ let ID = now() * COUNTER_DIGITS;
 const LONG_COUNTER_DIGITS = 1000000;
 let LONG_ID = now() * LONG_COUNTER_DIGITS;
 
-function generate() {
+function next() {
     const idMillis = Math.floor(ID / COUNTER_DIGITS);
     if (idMillis === now()) {
         const oldCounter = ID - idMillis * COUNTER_DIGITS;
@@ -29,7 +29,7 @@ function generate() {
     return ID;
 }
 
-function generateLong() {
+function nextExtended() {
     const idMillis = Math.floor(LONG_ID / LONG_COUNTER_DIGITS);
     if (idMillis === now()) {
         const oldCounter = LONG_ID - idMillis * LONG_COUNTER_DIGITS;
@@ -52,13 +52,13 @@ function generateLong() {
 
 const module = {};
 
-Object.defineProperty(module, 'generate', {
+Object.defineProperty(module, 'next', {
     enumerable: true,
-    value: generate
+    value: next
 });
 
-Object.defineProperty(module, 'generateLong', {
+Object.defineProperty(module, 'nextExtended', {
     enumerable: true,
-    value: generateLong
+    value: nextExtended
 });
 export default module;
