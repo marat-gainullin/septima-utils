@@ -6,62 +6,37 @@ function date() {
     return local.substring(0, local.length - 1);
 }
 
+function logOf(level, consoleFunc) {
+    return aMessage => {
+        if (console) {
+            consoleFunc(`${date()} ${level} ${aMessage}`);
+            if (typeof aMessage === 'object') {
+                consoleFunc(aMessage);
+            }
+        }
+    };
+}
+
 const module = {};
 Object.defineProperty(module, 'config', {
-    value: function(aMessage) {
-        if (console) {
-            console.log(date() + ' CONFIG ' + aMessage);
-        }
-    }
+    value: logOf('CONFIG', console.log)
 });
 Object.defineProperty(module, 'severe', {
-    value: function(aMessage) {
-        if (console) {
-            if (aMessage instanceof TypeError) {
-                console.error(aMessage);
-            } else {
-                console.error(date() + ' SEVERE ' + aMessage);
-            }
-        }
-    }
+    value: logOf('SEVERE', console.error)
 });
 Object.defineProperty(module, 'warning', {
-    value: function(aMessage) {
-        if (console) {
-            if (aMessage instanceof TypeError) {
-                console.warn(aMessage);
-            } else {
-                console.warn(date() + ' WARNING ' + aMessage);
-            }
-        }
-    }
+    value: logOf('WARNING', console.warn)
 });
 Object.defineProperty(module, 'info', {
-    value: function(aMessage) {
-        if (console) {
-            console.info(date() + ' INFO ' + aMessage);
-        }
-    }
+    value: logOf('INFO', console.info)
 });
 Object.defineProperty(module, 'fine', {
-    value: function(aMessage) {
-        if (console) {
-            console.log(date() + ' FINE ' + aMessage);
-        }
-    }
+    value: logOf('FINE', console.log)
 });
 Object.defineProperty(module, 'finer', {
-    value: function(aMessage) {
-        if (console) {
-            console.log(date() + ' FINER ' + aMessage);
-        }
-    }
+    value: logOf('FINER', console.log)
 });
 Object.defineProperty(module, 'finest', {
-    value: function(aMessage) {
-        if (console) {
-            console.log(date() + ' FINEST ' + aMessage);
-        }
-    }
+    value: logOf('FINEST', console.log)
 });
 export default module;
