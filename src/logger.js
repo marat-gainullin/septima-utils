@@ -6,62 +6,39 @@ function date() {
     return local.substring(0, local.length - 1);
 }
 
+function messageWith(level, consoleFunc) {
+    return aMessage => {
+        if (consoleFunc) {
+            if (typeof aMessage === 'object') {
+                consoleFunc(`${date()} ${level}`);
+                consoleFunc(aMessage);
+            } else {
+                consoleFunc(`${date()} ${level} ${aMessage}`);
+            }
+        }
+    };
+}
+
 const module = {};
 Object.defineProperty(module, 'config', {
-    value: function(aMessage) {
-        if (console) {
-            console.log(date() + ' CONFIG ' + aMessage);
-        }
-    }
+    value: messageWith('CONFIG', console ? console.log : null)
 });
 Object.defineProperty(module, 'severe', {
-    value: function(aMessage) {
-        if (console) {
-            if (aMessage instanceof TypeError) {
-                console.error(aMessage);
-            } else {
-                console.error(date() + ' SEVERE ' + aMessage);
-            }
-        }
-    }
+    value: messageWith('SEVERE', console ? console.error : null)
 });
 Object.defineProperty(module, 'warning', {
-    value: function(aMessage) {
-        if (console) {
-            if (aMessage instanceof TypeError) {
-                console.warn(aMessage);
-            } else {
-                console.warn(date() + ' WARNING ' + aMessage);
-            }
-        }
-    }
+    value: messageWith('WARNING', console ? console.warn : null)
 });
 Object.defineProperty(module, 'info', {
-    value: function(aMessage) {
-        if (console) {
-            console.info(date() + ' INFO ' + aMessage);
-        }
-    }
+    value: messageWith('INFO', console ? console.info : null)
 });
 Object.defineProperty(module, 'fine', {
-    value: function(aMessage) {
-        if (console) {
-            console.log(date() + ' FINE ' + aMessage);
-        }
-    }
+    value: messageWith('FILE', console ? console.log : null)
 });
 Object.defineProperty(module, 'finer', {
-    value: function(aMessage) {
-        if (console) {
-            console.log(date() + ' FINER ' + aMessage);
-        }
-    }
+    value: messageWith('FINER', console ? console.log : null)
 });
 Object.defineProperty(module, 'finest', {
-    value: function(aMessage) {
-        if (console) {
-            console.log(date() + ' FINEST ' + aMessage);
-        }
-    }
+    value: messageWith('FINEST', console ? console.log : null)
 });
 export default module;
