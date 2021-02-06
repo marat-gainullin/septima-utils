@@ -7,7 +7,6 @@
   "license": "BSD-3-Clause",
   "private": false,
   "devDependencies": {
-    "@babel/cli": "^7.12.13",
     "@babel/core": "^7.12.13",
     "@babel/plugin-transform-runtime": "^7.12.15",
     "@babel/preset-env": "^7.12.11",
@@ -20,7 +19,6 @@
     "rollup-plugin-generate-html-template": "^1.7.0",
     "rollup-plugin-multi-input": "^1.2.0",
     "rollup-plugin-styles": "^3.14.1",
-    "septima-model": "0.0.23",
     "shelljs": "^0.8.4"
   }
 }
