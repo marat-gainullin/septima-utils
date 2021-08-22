@@ -20,8 +20,7 @@ const config = {
         assetFileNames: "assets/[name].[ext]",
     },
     plugins: [
-        nodeResolve(),
-        commonjs(),
+        nodeResolve(), commonjs(),
         styles(),
         babel({
             babelHelpers: 'bundled',

@@ -58,7 +58,7 @@ describe('Utils Api', () => {
         Invoke.throttle(200, complete);
     });
     it('md5', () => {
-        var generated = Md5.generate('1');
+        const generated = Md5.generate('1');
         expect(generated).toEqual('c4ca4238a0b923820dcc509a6f75849b');
     });
 });
